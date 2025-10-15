@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Cuy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="siteContainer">
+
+        <h1>Cuy Land</h1>
+        <div class="container">
+            
+            <h2>Cuy Fun Facts</h2>
+            <h4>This Page has been hit <span id='hits'></span> times </h4>
+            <p><a href="/word.html">View the word of the day</a></p>
+            <ul>
+                <li>Cuy is the Spanish word for guinea pig.</li>
+                <li>Guinea pigs are native to the Andes in South America.</li>
+                <li>Cuy are often kept as pets and are also considered a delicacy in some countries.</li>
+                <li>They communicate using a variety of sounds, including squeaks and purrs.</li>
+                <li>Guinea pigs have continuously growing teeth and need to chew to keep them trimmed.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    fetch('/hits')
+    .then(response => response.json())
+    .then(
+        data => {
+            document.getElementById('hits').textContent = data.hits;
+        }
+    )
+
+</script>
+</html>

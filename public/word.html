@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word of the day</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Chandler's word of the Day is</h1>
+    <div>
+        Word: <span id="word"></span>
+    </div>
+    <div>Part: <span id="part"></span></div>
+    <div>Definition:<span id="definition"></span></div>
+    <h1>for the hw just submit the public folder,the index.js, and vid of this working</h1>
+</body>
+<script>
+    async function getNewWord(){
+        try{
+            const response = await fetch('/word');
+            const data = await response.json();
+            document.getElementById('word').textContent = data.word;
+            document.getElementById('part').textContent = data.part;
+            document.getElementById('definition').textContent = data.definition;
+        }
+        catch(error){
+            document.getElementById('word').textContent= "Error Loading!";
+        }
+    }
+    getNewWord();
+</script>
+
+</html>
