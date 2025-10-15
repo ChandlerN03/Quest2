@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Actor {
+            constructor(x,y) {
+                this.x = x;
+                this.y = y;
+            }
+            move(horizontal, vertical){
+                this.x += horizontal;
+                this.y += vertical;
+                console.log("an actor has moved")
+            }
+            distanceTo(otherActor){
+                let dx = otherActor.x - this.x;
+                let dy = otherActor.y - this.y;
+                let distance = Math.sqrt(
+                    Math.pow(dx, 2) + Math.pow(dy, 2)
+                )
+                return distance;
+            }
+        }
+        class Player extends Actor{
+            constructor(x, y){
+                super(x, y);
+                this.HP = 100;
+            }
+        }
+        class Enemy extends Actor{
+            attack(player) {
+                console.log("enemy is attacking!");
+                if(this.distanceTo(player) < 4) {
+                    console.log("HIT")
+                    player.HP -= 10;
+                    return true;
+                }
+                else{
+                    console.log("MISSED")
+                    console.log("Pro Tip: Get Closer")
+                    return false;
+                }
+            }
+        }
+        //
+        // HW #1 ANSWER
+        //
+        class Follower extends Actor{
+            constructor(startX,startY,player){
+                super(startX,startY);
+                this.player = player
+            }
+            follow(player){
+                console.log("follow executed")
+                this.x = player.x;
+                this.y = player.y;
+            }
+        }
+        // end of HW class code
+
+        let player1 = new Player(0,0);
+        let enemy1 = new Enemy(1,1);
+        let follower1 = new Follower(-1,-1);
+        console.log("starting player health "+player1.HP);
+        enemy1.attack(player1);
+        console.log(player1.HP);
+
+        //HW 1 CONTINUTATION
+        console.log("current player coordinates: ["+player1.x+","+player1.y+"]");
+        console.log("current follower coordinates: ["+follower1.x+","+follower1.y+"]")
+        follower1.follow(player1);
+        console.log("current follower coordinates: ["+follower1.x+","+follower1.y+"]")
+
+        player1.move(15,15)
+        console.log("current player coordinates: ["+player1.x+","+player1.y+"]");
+        console.log("current follower coordinates: ["+follower1.x+","+follower1.y+"]")
+        follower1.follow(player1);
+        console.log("current follower coordinates: ["+follower1.x+","+follower1.y+"]")
+    </script>
+    </script>
+    </script>
+</body>
+</html>
