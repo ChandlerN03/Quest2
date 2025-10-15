@@ -1,0 +1,32 @@
+.siteContainer{
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: rgb(58, 58, 137);
+    height: 100%;
+    padding-top: 2vh;
+}
+html{
+    height: 100%;
+}
+body {
+    background-color: rgb(2, 2, 45);
+    color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
+}
+h1,h2{
+    color: rgb(230, 224, 224);
+    text-align: center;
+}
+h1{
+    font-size: 40px;
+}
+.container{
+    background-color: rgb(150, 150, 224);
+    padding: 10px;
+}
+
+li{
+    padding: 3px;
+}
